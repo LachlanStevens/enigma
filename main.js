@@ -167,8 +167,8 @@ Apify.main(async () => {
                 // });
             }            
         },
-        maxRequestsPerCrawl: 100000,
-        maxConcurrency: 5,
+        maxRequestsPerCrawl: 100,
+        maxConcurrency: 3,
     });
 
     await crawler.run();
