@@ -153,18 +153,18 @@ Apify.main(async () => {
                 await dataset.pushData(results);
             } else {
                 console.log("PROCESSING START PAGE");
-                await Apify.utils.enqueueLinks({
-                    page,
-                    requestQueue,
-                    selector: 'a', 
-                    pseudoUrls: ['https://hipages.com.au/tradesman_names/[.*]']
-                });
                 // await Apify.utils.enqueueLinks({
                 //     page,
                 //     requestQueue,
                 //     selector: 'a', 
-                //     pseudoUrls: ['https://hipages.com.au/connect/[.*]']
+                //     pseudoUrls: ['https://hipages.com.au/tradesman_names/[.*]']
                 // });
+                await Apify.utils.enqueueLinks({
+                    page,
+                    requestQueue,
+                    selector: 'a', 
+                    pseudoUrls: ['https://hipages.com.au/connect/[.*]']
+                });
             }            
         },
         maxRequestsPerCrawl: 100,
