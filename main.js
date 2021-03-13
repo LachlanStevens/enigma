@@ -316,7 +316,7 @@ Apify.main(async () => {
                 // });
             }            
         },
-        maxRequestsPerCrawl: 5000,
+        maxRequestsPerCrawl: 100000,
         maxConcurrency: 5,
     });
 
