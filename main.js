@@ -2,8 +2,9 @@ const Apify = require('apify');
 
 Apify.main(async () => {
     const requestQueue = await Apify.openRequestQueue();
-    await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/N' }));
-    const dataset = await Apify.openDataset('hipagesB');
+    await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/O' }));
+    // const dataset = await Apify.openDataset('hipagesB');
+    const dataset = await Apify.openDataset('hipagesO');
     // const pseudoUrls = [new Apify.PseudoUrl('https://hipages.com.au/tradesman_names/[.*]')];
     const proxyConfiguration = await Apify.createProxyConfiguration();
     const crawler = new Apify.PuppeteerCrawler({
@@ -26,11 +27,11 @@ Apify.main(async () => {
                 });
             } else if(individualPage.matches(request.url)){
                 console.log("PROCESSING CHILD PAGE");
-                const title = await page.$eval(
+                const titleOfPage = await page.$eval(
                     '.idcmFM',
                     (el => el.textContent)
                 );
-                console.log(title);
+                console.log(titleOfPage);
                 
                 // await page.$('a.phone-number__desktop');
                 clickedItems = await page.$$eval('a.phone-number__desktop', links => links.forEach(link => link.click()));
@@ -139,6 +140,7 @@ Apify.main(async () => {
                 
                 results = {
                     "hipagesURL": request.url,
+                    "businessName": titleOfPage,
                     "sidebarInfo": sidebarInfo, 
                     "websiteURL": websiteURL, 
                     "rating": rating,
