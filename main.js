@@ -2,7 +2,7 @@ const Apify = require('apify');
 
 Apify.main(async () => {
     const requestQueue = await Apify.openRequestQueue();
-    await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/R' }));
+    await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/S' }));
     // const dataset = await Apify.openDataset('hipagesB');
     const dataset = await Apify.openDataset('hipagesO');
     // const pseudoUrls = [new Apify.PseudoUrl('https://hipages.com.au/tradesman_names/[.*]')];
