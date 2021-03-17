@@ -1,13 +1,16 @@
 const Apify = require('apify');
 
 Apify.main(async () => {
+    const { startUrls } = await Apify.getInput();
+    const requestList = await Apify.openRequestList('start-urls', startUrls);
     const requestQueue = await Apify.openRequestQueue();
-    await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/U' }));
+    // await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/U' }));
     // const dataset = await Apify.openDataset('hipagesB');
     const dataset = await Apify.openDataset('hipagesO');
     // const pseudoUrls = [new Apify.PseudoUrl('https://hipages.com.au/tradesman_names/[.*]')];
     const proxyConfiguration = await Apify.createProxyConfiguration();
     const crawler = new Apify.PuppeteerCrawler({
+        requestList,
         requestQueue,
         proxyConfiguration,
         handlePageFunction: async ({ request, page }) => {
