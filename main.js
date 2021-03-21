@@ -36,6 +36,12 @@ Apify.main(async () => {
                 );
                 console.log(titleOfPage);
                 
+                const memberSince = await page.$eval(
+                    '.fGRaFI',
+                    (el => el.textContent)
+                );
+                console.log(memberSince);
+
                 // await page.$('a.phone-number__desktop');
                 clickedItems = await page.$$eval('a.phone-number__desktop', links => links.forEach(link => link.click()));
                 await page.waitFor(5000);
@@ -143,6 +149,7 @@ Apify.main(async () => {
                 
                 results = {
                     "hipagesURL": request.url,
+                    "memberSince": memberSince,
                     "businessName": titleOfPage,
                     "sidebarInfo": sidebarInfo, 
                     "websiteURL": websiteURL, 
