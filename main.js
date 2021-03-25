@@ -6,7 +6,7 @@ Apify.main(async () => {
     const requestQueue = await Apify.openRequestQueue();
     // await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/U' }));
     // const dataset = await Apify.openDataset('hipagesB');
-    const dataset = await Apify.openDataset('hipagesbusinesses');
+    const dataset = await Apify.openDataset('hipagesbusinessesN');
     // const pseudoUrls = [new Apify.PseudoUrl('https://hipages.com.au/tradesman_names/[.*]')];
     const proxyConfiguration = await Apify.createProxyConfiguration();
     const crawler = new Apify.PuppeteerCrawler({
