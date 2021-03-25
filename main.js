@@ -158,7 +158,8 @@ Apify.main(async () => {
                     "containsVerified": containsVerified, 
                     "numberOfRecommendation": numberOfRecommendation,
                     "credentials": credentials,
-                    "emails": emails
+                    "emails": emails,
+                    "fullHTML": fullHTML
                 };
                 console.log(results);
 
