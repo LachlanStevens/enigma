@@ -180,7 +180,7 @@ Apify.main(async () => {
                 });
             }            
         },
-        maxRequestsPerCrawl: 10000,
+        maxRequestsPerCrawl: 100000,
         maxConcurrency: 3,
     });
 
