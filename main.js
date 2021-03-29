@@ -4,10 +4,10 @@ Apify.main(async () => {
     //const { startUrls } = await Apify.getInput();
     //const requestList = await Apify.openRequestList('start-urls', startUrls);
     //const requestQueue = await Apify.openRequestQueue();
-    const requestQueue = await Apify.openRequestQueue('outstandingQueue1');
+    const requestQueue = await Apify.openRequestQueue('outstandingQueue2');
     // await requestQueue.addRequest(new Apify.Request({ url: 'https://hipages.com.au/tradesman_names/U' }));
     // const dataset = await Apify.openDataset('hipagesB');
-    const dataset = await Apify.openDataset('outstandingQueue1');
+    const dataset = await Apify.openDataset('outstandingQueue2');
     // const pseudoUrls = [new Apify.PseudoUrl('https://hipages.com.au/tradesman_names/[.*]')];
     const proxyConfiguration = await Apify.createProxyConfiguration();
     const crawler = new Apify.PuppeteerCrawler({
@@ -137,7 +137,7 @@ Apify.main(async () => {
                 } 
                 console.log("website url", websiteURL);
 
-                fullHTML = await page.evaluate(() => document.body.outerHTML)
+                fullHTML = await page.evaluate(() => document.body.outerHTML);
                 var emails = Apify.utils.social.emailsFromText(fullHTML);
                 emails = emails.filter(e => e !== 'support@hipages.com.au');
                 console.log(emails);
@@ -146,7 +146,7 @@ Apify.main(async () => {
                 // await keyValueStore.setValue(key, body, { contentType: 'text/html; charset=utf-8' });
                 // var htmlSnapshotUrl = keyValueStore.getPublicUrl(key);
                 // console.log(htmlSnapshotUrl);
-                
+
                 results = {
                     "hipagesURL": request.url,
                     "memberSince": memberSince,
